@@ -22,9 +22,14 @@ h1 { font-size: 18px; margin: 0; letter-spacing: 0.01em; }
 h2 { font-size: 13px; margin: 0 0 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); font-weight: 600; }
 
 .app { min-height: 100vh; padding: 16px clamp(16px, 3vw, 32px) 24px; }
-.app.drag { outline: 2px dashed var(--muted); outline-offset: -8px; }
+.tool.drag { outline: 2px dashed var(--muted); outline-offset: 4px; border-radius: 12px; }
 
-.top { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 16px; }
+.top { display: flex; align-items: center; gap: 16px 20px; flex-wrap: wrap; margin-bottom: 14px; }
+.tabs { display: flex; gap: 4px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 3px; }
+.tabs a { color: var(--muted); text-decoration: none; padding: 5px 12px; border-radius: 7px; white-space: nowrap; }
+.tabs a:hover { color: var(--ink); }
+.tabs a.on { background: var(--panel-2); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.toolbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 14px; min-height: 36px; }
 .tag { margin: 0; color: var(--muted); flex: 1; min-width: 200px; }
 
 .error { background: #3a2a1d; border: 1px solid #6b4a2a; color: #f2d2a8; padding: 8px 12px; border-radius: 8px; margin-bottom: 12px; }
@@ -116,3 +121,21 @@ h2 { font-size: 13px; margin: 0 0 10px; text-transform: uppercase; letter-spacin
 .slider input { width: 100%; accent-color: var(--accent); margin: 4px 0 0; }
 
 .foot { text-align: center; margin-top: 24px; }
+
+/* Resize & pad */
+.checker { background: repeating-conic-gradient(#2a2a2c 0 25%, #222224 0 50%) 0 0 / 20px 20px; padding: 12px; }
+.resize-canvas { display: block; max-width: 100%; max-height: 72vh; width: auto; height: auto; box-shadow: 0 0 0 1px var(--line), 0 6px 24px rgba(0,0,0,.45); }
+.ratio-in { display: inline-flex; align-items: center; gap: 4px; color: var(--muted); }
+.ratio-in input { width: 52px; background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 3px 6px; font: inherit; text-align: center; }
+div.harm { cursor: pointer; }
+.swatches { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.swatch { width: 28px; height: 28px; border-radius: 50%; border: 0; padding: 0; cursor: pointer; box-shadow: 0 0 0 1px var(--line); position: relative; overflow: hidden; }
+.swatch.on { box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px var(--accent); }
+.swatch.picker { background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red); }
+.swatch.picker input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 0; }
+.progress { display: inline-flex; align-items: center; gap: 10px; margin-left: auto; font-variant-numeric: tabular-nums; }
+.progress .bar { width: 160px; height: 6px; border-radius: 99px; background: var(--panel-2); overflow: hidden; box-shadow: inset 0 0 0 1px var(--line); }
+.progress .bar span { display: block; height: 100%; background: var(--accent); transition: width .2s; }
+.btn:disabled { opacity: .5; cursor: default; }
+.harm:not(.on) .ratio-in { opacity: .55; }

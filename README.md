@@ -1,8 +1,20 @@
-# Hue Harmony: a color grading helper
+# Color Grading Helper
 
-A browser app that maps a photo's hues onto a color wheel, fits a color harmony to them, and shows where to push each hue. Everything runs locally in the browser, so photos are never uploaded.
+Two browser tools for preparing images. Everything runs locally in the browser, so nothing is uploaded.
 
-## What it does
+- **Hue harmony** (`#harmony`): maps a photo's hues onto a color wheel, fits a color harmony and shows where to push each hue.
+- **Resize & pad** (`#resize`): changes the aspect ratio of an image or video by adding padding, so Instagram doesn't crop it.
+
+## Resize & pad
+
+- **Ratios:** Reels/Stories 9:16 (1080×1920), feed portrait 4:5, square, landscape 16:9, or a custom W:H.
+- **Size:** "Instagram" makes the short side 1080 px. "Full resolution" keeps every source pixel and grows the canvas around it (capped at 3840 px).
+- **Padding:** a solid color (presets or a picker) or a blurred, optionally darkened, copy of the content. An extra margin slider adds space on all sides.
+- **Images** export as PNG or JPEG. **Videos** are re-encoded on your device with WebCodecs (via [mediabunny](https://mediabunny.dev)) to MP4, H.264 where the browser supports it, keeping the frame rate and audio. Phone videos with rotation metadata come out upright. Needs a recent Chrome, Edge, Safari or Firefox.
+
+A 20:15 (4:3) drawing in a 9:16 reel is scaled to 1080×810 and centred, with 555 px of padding above and below.
+
+## Hue harmony
 
 1. **Hue clustering.** Each pixel's hue (HSV) goes into a 1° histogram. Near-neutral pixels (low saturation or brightness) are skipped, since their hue is unreliable; both cutoffs are adjustable. Hues are clustered with a weighted k-means that works on the circle, so 359° and 1° count as neighbours.
    - **Auto:** picks the *fewest* clusters (1 to 8) whose RMS hue spread is within the tolerance (default ±15°).
